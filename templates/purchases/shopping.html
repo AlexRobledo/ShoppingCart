@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+{% load static %}
+    <head>
+        {% include 'purchases/head.html' %}
+        <title>Catálogo | 100Ladrillos</title>
+        <link rel="stylesheet" href="{% static 'purchases/css/shopping.css' %}">
+        <script type="text/javascript" src="{% static 'purchases/js/shopping.js' %}"></script>
+    </head>
+    <body>
+        {% include 'purchases/header.html' %}
+
+        <main class="main-body">
+            <section class="properties-investment">
+                <h1 class="section-title">COMPRA LADRILLOS</h1>
+                <article class="property-panel">
+                    <picture class="left" style="background-image: url('{{media_photo}}');" title="Foto de la propiedad"></picture>
+                    <header class="right">
+                        <h2 class="property-title">EDIFICIO RANDOM</h2>
+                        <p class="description">Texto descriptivo de la propiedad en renta...</p>
+                        <span class="availables">Ladrillos disponibles: 100</span>
+                        <div class="brick-selector">
+                            <button class="small-btn minus primaryColor" title="Decrementar" onclick="decrementQuantity(this);">-</button>
+                            <input type="number" class="quantity" max="100" min="0" value="0" onchange="validateQuantity(this);">
+                            <button class="small-btn plus primaryColor" title="Incrementar" onclick="incrementQuantity(this);">+</button>
+                        </div>
+                    </header>
+                    <footer class="bottom">
+                        <h3 class="property-footer">COSTO P/LADRILLO: $</h3>
+                    </footer>
+                </article>
+            </section>
+            
+            <button id="shoppingCart" name="shoppingCart" title="Ver carrito de compras" class="shopping-cart secundaryColor"><i class="fas fa-shopping-cart"> Checkout</i></button>
+        </main>
+
+        {% include 'purchases/footer.html' %}
+
+    </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+{% load static %}
+    <head>
+        {% include 'purchases/head.html' %}
+        <title>Catálogo | 100Ladrillos</title>
+        <link rel="stylesheet" href="{% static 'purchases/css/shopping.css' %}">
+        <script type="text/javascript" src="{% static 'purchases/js/shopping.js' %}"></script>
+    </head>
+    <body>
+        {% include 'purchases/header.html' %}
+
+        {% include 'purchases/cart.html' %}
+
+        <main class="main-body">
+            <section class="properties-investment">
+                <h1 class="section-title">COMPRA LADRILLOS</h1>
+                {% for p in properties %}
+                    <article id="{{p.id}}" class="property-panel">
+                        <picture class="left" style="background-image: url('{{MEDIA_URL}}{{p.image_url}}');" title="{{MEDIA_URL}}{{p.image_url}}"></picture>
+                        <header class="right">
+                            <h2 class="property-title">{{p.name|upper}}</h2>
+                            <p class="description">{{p.description}}</p>
+                            <span class="availables">Ladrillos disponibles: {{p.available_bricks}} de {{p.total_bricks}}</span>
+                            <div class="brick-selector">
+                                <button class="small-btn minus primaryColor" title="Decrementar" onclick="decrementQuantity(this);">-</button>
+                                <input type="number" class="quantity" max="{{p.available_bricks}}" min="0" value="0" onchange="validateQuantity(this);">
+                                <button class="small-btn plus primaryColor" title="Incrementar" onclick="incrementQuantity(this);">+</button>
+                            </div>
+                        </header>
+                        <footer class="bottom">
+                            <h3 class="property-footer">COSTO P/LADRILLO: $<b>{{p.unit_price}}</b></h3>
+                        </footer>
+                    </article>
+                {% endfor %}
+            </section>
+            
+            <button id="shoppingCart" name="shoppingCart" title="Ver carrito de compras" class="shopping-cart secundaryColor" onclick="hitCheckout();"><i class="fas fa-shopping-cart"> Checkout</i></button>
+        </main>
+
+        {% include 'purchases/footer.html' %}
+
+    </body>
+</html>

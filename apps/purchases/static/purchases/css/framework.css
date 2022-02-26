@@ -1,0 +1,347 @@
+/* AJUSTES GENERALES */
+
+html {
+    --primaryColor: #ff5a60;
+    --secundaryColor: rgba(219, 219, 219, 1);
+    --tertiaryColor: #4a4a4a;
+    height: 100vh;
+}
+
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+/* PANEL DE CARGA  */
+
+.loader-panel {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw !important;
+    height: 100vh !important;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .loader {
+    border: 16px solid lightgray;
+    border-top: 16px solid var(--primaryColor);
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 0.5s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+/* MENÚ DE NAVEGACIÓN */
+
+.top-header {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 80vw;
+    max-height: 15vh;
+    margin: auto;
+    padding: 2%;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+    z-index: 10;
+    background-color: #fff;
+}
+
+.top-header .nav-menu {
+    display: flex;
+    flex-flow: row-reverse wrap;
+    justify-content: space-around;
+    align-items: baseline;
+    width: 35%;
+}
+
+
+/* COLORES */
+
+.primaryColor {
+    background-color: var(--primaryColor);
+    color: #fff;
+    border-color: #fff;
+    border-style: solid;
+}
+
+.primaryColor:hover:not([disabled]){
+    background-color: #fff;
+    color: var(--primaryColor);
+    transition: 0.2s;
+    border-color: var(--primaryColor);
+}
+
+.secundaryColor {
+    background-color: lightgray;
+    color: var(--primaryColor);
+    border-color: var(--secundaryColor);
+    border-style: solid;
+}
+
+.secundaryColor:hover:not([disabled]){
+    background-color: var(--secundaryColor);
+    color: var(--primaryColor);
+    transition: 0.2s;
+    border-color: var(--primaryColor);
+}
+
+
+/* BOTONES */
+
+.primary-btn {
+    padding: 3%;
+    border-radius: 80px;
+    font-size: 16px;
+    font-weight: bolder;
+    font-family: 'Roboto Condensed', sans-serif;
+    text-transform: uppercase;
+}
+
+.primary-btn:hover:not([disabled]){
+    cursor: pointer;
+}
+
+.secundary-btn {
+    padding: 1%;
+    border-radius: 80px;
+    font-size: 16px;
+    font-weight: bolder;
+    font-family: 'Roboto Condensed', sans-serif;
+    text-transform: uppercase;
+}
+
+.secundary-btn:hover:not([disabled]){
+    cursor: pointer;
+}
+
+.tertiary-btn {
+    padding: 1%;
+    font-size: 16px;
+    background-color: transparent;
+    border: transparent;
+    text-decoration: underline;
+    font-weight: bolder;
+    font-family: 'Roboto Condensed', sans-serif;
+    text-transform: uppercase;
+}
+
+.tertiary-btn:hover:not([disabled]){
+    cursor: pointer;
+    color: var(--primaryColor);
+}
+
+.shopping-cart {
+    position: fixed;
+    top: 15vh;
+    right: 3vw;
+    font-size: larger;
+    border-radius: 30px;
+    padding: 1%;
+    z-index: 15;
+}
+
+.shopping-cart:hover {
+    cursor: pointer;
+}
+
+/* CONTENEDORES */
+
+.main-body {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    min-height: 80vh;
+}
+
+.footer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 15vh;
+    width: 90vw;
+    background-color: var(--primaryColor);
+    margin: auto;
+    padding: 2%;
+    margin-top: 5vh;
+}
+
+.social-media {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    color: #fff;
+    font-size: xx-large;
+    width: 30vw;
+}
+
+.social-media a{
+    color: inherit;
+}
+
+.notibox{
+    display: none;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 250px;
+    max-height: 100px;
+    overflow: hidden;
+    background: var(--primaryColor);
+    color: #fff;
+    font-size: 14px;
+    text-align: justify;
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.25);
+    z-index: 102;
+}
+
+.hidden {
+    display: none;
+}
+
+/* TÍTULOS */
+
+.section-title {
+    width: 100%;
+    font-size: x-large;
+    border-bottom: var(--primaryColor) solid;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.property-title {
+    width: 100%;
+    font-size: large;
+    border-bottom: var(--primaryColor) solid;
+    text-align: center;
+}
+
+.bold {
+    font-weight: bolder;
+}
+
+/* TABLAS */
+
+.table {
+    width: 100%;
+}
+
+.table .table-header {
+    background-color: var(--primaryColor);
+    color: #fff;
+}
+
+.table tbody tr {
+    text-align: center;
+}
+
+.bold {
+    text-align: center;
+}
+
+.flex-end {
+    text-align: end;
+}
+
+/* POP UP */
+
+.overlay {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .75);
+    z-index: 101;
+}
+  
+.dialog {
+    display: none;
+    background-color: white;
+    border-radius: 30px;
+    width: 75% !important;
+    max-height: 75vh;
+    padding: 3%;
+}
+  
+.dialog-title {
+    font-size: x-large;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+  
+.dialog-title h1{
+    text-align: center;
+    color: var(--primaryColor);
+}
+  
+.dialog-title .close-mark{
+    color: rgba(162, 0, 0, 1);
+    cursor: pointer;
+    position: relative;
+    right: -20%;
+    top: 0px;
+    font-size: -webkit-xxx-large;
+}
+  
+.dialog-body {
+    overflow-y: auto;
+    max-height: 45vh;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+  
+.dialog-body p{
+    width: 100%;
+    text-align: center;
+    font-size: large;
+}
+  
+.dialog-options {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* RESPONSIVIDAD GENERAL  */
+@media only screen and (max-width:425px){
+    .small-logo {
+        width: 30vw;
+    }
+    
+    .nav-menu {
+        width: 60vw;
+    }
+}
+
+@media only screen and (max-width:768px) and (min-width:426px){
+    .small-logo {
+        width: 15vw;
+    }
+
+    .nav-menu {
+        width: 65vw;
+    }
+}

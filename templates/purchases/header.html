@@ -1,0 +1,18 @@
+{% load static %}
+
+<!-- PANEL DE CARGA -->
+<div class="loader-panel">
+    <div class="loader"></div>
+</div>
+
+<!-- MENÚ SUPERIOR -->
+<div class="top-header">
+    <a href="{% url 'index' %}">
+        <img class="small-logo" src="{% static 'purchases/img/logotipoNegative.svg' %}" alt="Ir al inicio">
+    </a>
+    <nav class="nav-menu">
+        <button class="primary-btn primaryColor">Registrarme</button>
+        <button class="primary-btn secundaryColor">Entrar</button>
+        <button class="tertiary-btn">Otro</button>
+    </nav>
+</div>

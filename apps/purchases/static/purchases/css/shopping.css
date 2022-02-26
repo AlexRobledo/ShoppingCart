@@ -1,0 +1,98 @@
+.properties-investment {
+    width: 80vw;
+}
+
+.property-panel{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 0%;
+    border-radius: 50px;
+    border: var(--primaryColor) solid;
+}
+
+.property-panel .left {
+    width: 20%;
+    padding: 2%;
+    border-top-left-radius: 50px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.property-panel .left .property-img {
+    width: 100%;
+    height: 100%;
+}
+
+.property-panel .right {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    padding: 2%;
+}
+
+.property-panel .right .description {
+    width: 90%;
+    text-align: justify;
+}
+
+.property-panel .right .availables {
+    color: var(--primaryColor);
+}
+
+.property-panel .right .brick-selector {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    height: 5vh;
+}
+
+.property-panel .right .brick-selector .small-btn {
+    border-radius: 50%;
+    font-weight: bolder;
+    font-size: xx-large;
+    width: 40px;
+    text-align: center;
+}
+
+.property-panel .right .brick-selector .small-btn:hover{
+    cursor: pointer;
+}
+
+.property-panel .right .brick-selector .quantity {
+    outline: none;
+    transform: none;
+    border: none;
+    font-size: x-large;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.property-panel .right .brick-selector .quantity::-webkit-outer-spin-button,
+.property-panel .right .brick-selector .quantity::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.property-panel .right .brick-selector .quantity[type=number]{
+    -moz-appearance: textfield;
+}
+
+.property-panel .bottom {
+    width: 100%;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    background-color: var(--primaryColor);
+}
+.property-panel .property-footer{
+    width: 100%;
+    text-align: center;
+    color: #fff;
+}

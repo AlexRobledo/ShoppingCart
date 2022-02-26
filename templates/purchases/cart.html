@@ -1,0 +1,61 @@
+{% load static %}
+<div class="overlay">
+    <section id="overlayTerms" class="dialog">
+        <header class="dialog-title">
+            <h1>Términos y condiciones</h1>
+            <span class="close-mark" title="Cerrar" onclick="hideDialog();">&times</span>
+        </header>
+        <main class="dialog-body">
+            {% lorem 5 p%}
+        </main>
+        <footer class="dialog-options">
+            <p>Al hacer clic en 'Aceptar', acepto que he leído y estoy de acuerdo con los términos y condiciones de 100 Ladrillos</p>
+            <button class="secundary-btn primaryColor" onclick="showSummary(); displayPurchaseSummary();">Aceptar</button>
+        </footer>
+    </section>
+
+    <section id="overlaySummary" class="dialog">
+        <header class="dialog-title">
+            <h1>Detalles de compra</h1>
+            <span class="close-mark" title="Cerrar" onclick="hideDialog();">&times</span>
+        </header>
+        <main class="dialog-body">
+            <table class="table">
+                <thead id="mainThead" class="table-header">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Costo</th>
+                        <th>Cantidad</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody id="mainTbody">
+                </tbody>
+                <tfoot id="mainTfoot">
+                    <tr>
+                        <td class="flex-end" colspan="3">TOTAL:</td>
+                        <td id="total_cost" class="bold">$999.99</td>
+                    </tr>
+                </tfoot>
+            </table>
+            <p>¿Deseas comprar todo lo incluido en el carrito?</p>
+        </main>
+        <footer class="dialog-options">
+            {% csrf_token %}
+            <button class="secundary-btn secundaryColor" title="Cancelar y cerrar" onclick="hideDialog();">Cancelar</button>
+            <button class="secundary-btn primaryColor" title="Continuar al pago" onclick="checkout();">¡Comprar!</button>
+        </footer>
+    </section>
+
+    <section id="overlayReload" class="dialog">
+        <header class="dialog-title">
+            <h1>¡Gracias por invertir con nosotros!</h1>
+        </header>
+        <main class="dialog-body">
+            <p>Tu compra ha sido registrada con éxito. Haz clic en el botón para continuar en el catálogo.</p>
+        </main>
+        <footer class="dialog-options">
+            <button class="secundary-btn primaryColor" title="Recargar" onclick="location.reload();">Recargar</button>
+        </footer>
+    </section>
+</div>

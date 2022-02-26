@@ -41,8 +41,21 @@
             <p>¿Deseas comprar todo lo incluido en el carrito?</p>
         </main>
         <footer class="dialog-options">
+            {% csrf_token %}
             <button class="secundary-btn secundaryColor" title="Cancelar y cerrar" onclick="hideDialog();">Cancelar</button>
-            <button class="secundary-btn primaryColor" title="Continuar al pago">¡Comprar!</button>
+            <button class="secundary-btn primaryColor" title="Continuar al pago" onclick="checkout();">¡Comprar!</button>
+        </footer>
+    </section>
+
+    <section id="overlayReload" class="dialog">
+        <header class="dialog-title">
+            <h1>¡Gracias por invertir con nosotros!</h1>
+        </header>
+        <main class="dialog-body">
+            <p>Tu compra ha sido registrada con éxito. Haz clic en el botón para continuar en el catálogo.</p>
+        </main>
+        <footer class="dialog-options">
+            <button class="secundary-btn primaryColor" title="Recargar" onclick="location.reload();">Recargar</button>
         </footer>
     </section>
 </div>

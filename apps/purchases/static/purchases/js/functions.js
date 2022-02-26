@@ -18,6 +18,7 @@ const hideDialog = () => {
   $('.overlay').fadeOut(200);
   $('#overlaySummary').fadeOut(200);
   $('#overlayTerms').fadeOut(200);
+  $('#overlayReload').fadeOut(200);
 }
 
 const showSummary = () => {
@@ -29,6 +30,11 @@ const showTerms = () => {
   $('.overlay').fadeIn(200);
   $('.overlay').css('display', 'flex');
   $('#overlayTerms').css('display', 'block');
+}
+
+const showReload = () => {
+  $('#overlaySummary').css('display', 'none');
+  $('#overlayReload').css('display', 'block');
 }
 
 const addNotiBox = (message) => {

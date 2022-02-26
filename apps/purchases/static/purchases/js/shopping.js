@@ -86,23 +86,23 @@ const getPropertyPriceInDOM = (id) => { // Obtiene el precio por ladrillo de una
     return price;
 }
 
-const displayPurchaseSummary = () => {
-    $('#mainTbody tr').remove();
+const displayPurchaseSummary = () => {  // Añade el carrito de compras a la vista de resumen y lo despliega en la tabla
+    $('#mainTbody tr').remove();    // Remueve todas las filas del cuerpo de la tabla
     let tbody = document.getElementById('mainTbody');
-    let totalCost = 0;
-    for(let i = 0; i < propertiesList.length; i++){
-        let row = document.createElement('tr');
-        row.id = "row_" + propertiesList[i].id.toString();
-        let nameCell = document.createElement('td');
+    let totalCost = 0;  // Costo total a invertir
+    for(let i = 0; i < propertiesList.length; i++){ // Para cada objeto en el carrito de compras
+        let row = document.createElement('tr'); // Crea una fila para la table
+        row.id = "row_" + propertiesList[i].id.toString();  
+        let nameCell = document.createElement('td');    // Celda del nombre de la propiedad
         nameCell.innerText = propertiesList[i].name;
-        let priceCell = document.createElement('td');
+        let priceCell = document.createElement('td');   // Celda del costo por ladrillo
         priceCell.innerText = '$' + propertiesList[i].price.toString();
-        let quantityCell = document.createElement('td');
+        let quantityCell = document.createElement('td');    // Celda de la cantidad de ladrillos a adquirir
         quantityCell.innerText = propertiesList[i].quantity.toString();
-        let subtotalCell = document.createElement('td');
-        let subtotal = propertiesList[i].quantity * propertiesList[i].price;
+        let subtotalCell = document.createElement('td');    // Subtotal de cantidad a invertir por propiedad
+        let subtotal = propertiesList[i].quantity * propertiesList[i].price;    
         subtotalCell.innerText = '$' + subtotal.toString();
-        totalCost += subtotal;
+        totalCost += subtotal; 
         row.append(nameCell, priceCell, quantityCell, subtotalCell);
         tbody.append(row);
     }
@@ -110,10 +110,38 @@ const displayPurchaseSummary = () => {
     totalCostCell.innerText = '$' + totalCost.toString();
 }
 
-const hitCheckout = () => {
-    if(propertiesList.length < 1){
-        addNotiBox("Se debe agregar al menos 1 ladrillo para continuar con la compra.");
+const hitCheckout = () => { // Abrir checkout de compras
+    if(propertiesList.length < 1){  // Si no se ha agregado nada al carrito
+        addNotiBox("Se debe agregar al menos 1 ladrillo para continuar con la compra.");   
         return;
     }
-    showTerms();
+    showTerms();    // Muestra los términos y condiciones
+}
+
+const checkout = () => {    // Función en ajax que consulta la API en el servidor para guardar la transacción
+    let authToken = $('.dialog-options input[name=csrfmiddlewaretoken]').val(); // El usuario se autentica por token
+    showLoader();
+    $.ajax({
+        data: {
+            'csrfmiddlewaretoken': authToken,
+            'propertiesList': JSON.stringify(propertiesList)    // Manda la lista de propiedades del carrito en formato JSON
+        },
+        type: "POST",   // Indica el método a seguir de la API. En este caso POST para un nuevo registro (transacción)
+        url: "../Checkout/",    // URL de la API
+        success: function(response){    // En caso de que el servidor responda exitosamente
+            if(response.success){   // Si el proceso realizado en el servidor fue concluido con éxito
+                showReload();   // Muestra pop up de recarga
+                addNotiBox(response.success);
+            }
+            else if(response.error){    // Si el proceso realizado en el servidor tuvo algún error
+                hideDialog();   // Oculta pop up
+                addNotiBox(response.error);
+            }
+            hideLoader();
+        },
+        error: function(response){  // En caso de que el servidor arroje error
+            addNotiBox("Algo ha salido mal. Recarga la página e inténtalo nuevamente.");
+            hideLoader();
+        }
+    });
 }

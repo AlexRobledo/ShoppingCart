@@ -15,12 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from apps.purchases import views as purchases_views
 from django.conf import settings
 from django.conf.urls.static import static
+from apps.purchases import views as purchases_views
+from apps.purchases import backend as purchases_backend
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # Front views
     path('', purchases_views.Shopping, name = 'index'),
     path('shopping/', purchases_views.Shopping, name = 'shopping'),
+    # Back views
+    path('Checkout/', purchases_backend.Checkout, name = 'checkout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

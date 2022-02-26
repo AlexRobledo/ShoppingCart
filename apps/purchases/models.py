@@ -4,7 +4,8 @@ from apps.purchases import functions
 import os
 
 # Create your models here.
-class User(AbstractUser):
+
+class User(AbstractUser):   # Hereda AbstractUser, que es el modelo de autenticación por defecto de Django
     class Meta():
         db_table = 'user'
 
